@@ -1,0 +1,100 @@
+page-reward ul, page-reward li {
+  list-style-type: none;
+  overflow: hidden; }
+page-reward .float-left {
+  float: left; }
+page-reward .float-right {
+  float: right; }
+page-reward .section-header {
+  position: relative;
+  width: 100%;
+  height: 23%; }
+  page-reward .section-header .div-header-img {
+    height: 100%; }
+    page-reward .section-header .div-header-img img {
+      position: inherit;
+      width: 100%;
+      height: 100%; }
+    page-reward .section-header .div-header-img .input-header-btn {
+      right: 5%;
+      height: 56px;
+      width: 56px;
+      bottom: -20px;
+      z-index: 9999;
+      border-radius: 50%;
+      position: absolute; }
+page-reward .list-message .item-block {
+  padding-left: 0px; }
+page-reward .list-message .item-block:first-child {
+  border-top: 0; }
+page-reward .list-message .li-item {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  line-height: 2rem;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1); }
+page-reward .list-message .div-header-img {
+  height: 100%;
+  width: 100%;
+  overflow: auto; }
+  page-reward .list-message .div-header-img .div-header {
+    float: left;
+    padding: 2px;
+    margin-left: 6px; }
+    page-reward .list-message .div-header-img .div-header img {
+      float: left;
+      width: 46px;
+      height: 46px;
+      padding: 5px;
+      margin-top: 10px;
+      border-radius: 23px; }
+  page-reward .list-message .div-header-img .div-title {
+    display: block;
+    float: left;
+    width: 80%;
+    padding-top: 14px; }
+    page-reward .list-message .div-header-img .div-title .li-content-header {
+      width: 100%;
+      overflow: auto;
+      display: block; }
+    page-reward .list-message .div-header-img .div-title .p-title {
+      font-size: medium;
+      font-weight: bolder;
+      margin-top: 10px;
+      margin-bottom: 5px; }
+    page-reward .list-message .div-header-img .div-title .p-reward {
+      display: block;
+      margin-top: 8px;
+      margin-bottom: 5px; }
+      page-reward .list-message .div-header-img .div-title .p-reward span {
+        padding: 0.3rem;
+        color: sandybrown;
+        font-size: smaller;
+        font-weight: bolder;
+        border-radius: 0.2rem;
+        border: 0.5px solid sandybrown; }
+    page-reward .list-message .div-header-img .div-title .p-content {
+      width: 100%;
+      display: block;
+      margin: 0.1rem; }
+    page-reward .list-message .div-header-img .div-title .photo-view {
+      width: 100%; }
+    page-reward .list-message .div-header-img .div-title .div-bottom-bar {
+      width: 100%; }
+      page-reward .list-message .div-header-img .div-title .div-bottom-bar p {
+        float: left; }
+        page-reward .list-message .div-header-img .div-title .div-bottom-bar p:first-of-type {
+          width: 40%; }
+      page-reward .list-message .div-header-img .div-title .div-bottom-bar .span-img {
+        float: left;
+        margin-top: 14px; }
+      page-reward .list-message .div-header-img .div-title .div-bottom-bar .img-icon {
+        margin: 4px;
+        width: 18px;
+        height: 18px;
+        border-radius: 10px; }
+      page-reward .list-message .div-header-img .div-title .div-bottom-bar .div-comment {
+        overflow: inherit;
+        margin-top: 14px; }
+
+/*# sourceMappingURL=reward.css.map */

@@ -8,5 +8,178 @@
 
 
 <ion-content padding>
+  <h2>Welcome to Ionic! 简单控件</h2>
 
+  <!-- 栅栏 -->
+  <ion-grid>
+    <ion-row >
+      <ion-col col-12=""> 栅栏 1 </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6="6"> 栅栏 2 </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+        栅栏 3
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- 图标icon -->
+  <ion-icon name="heart" margin-left="5"> 系统图标1 </ion-icon>
+  <ion-icon name="heart" isActive="false"> 系统图标2 </ion-icon>
+  <ion-icon ios="logo-apple" md="logo-apple"> 系统图标3 </ion-icon>
+  <ion-icon [name]="myIcon" margin-bottom="5"> 绑定ts 中数据 </ion-icon>
+
+  <!-- ion-list -->
+  <ion-list margin-bottom="2">
+    <ion-item>
+      <ion-label fixed> 用户名</ion-label>
+      <ion-input placeholdera="输入用户名" type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating> 用户密码</ion-label>
+      <ion-input type="password" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked=""> 手机号 </ion-label>
+      <ion-input type="text"> </ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding-bottom="20">
+    <button ion-button style="width: 90%"> 登&录 </button>
+  </div>
+
+  <!-- lists -->
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)"> {{item}}</button>
+  </ion-list>
+
+  <!-- list group -->
+  <ion-item-group>
+    <ion-item-divider color="light"> group - A</ion-item-divider>
+    <ion-item> group - 00 </ion-item>
+    <ion-item> group - 01 </ion-item>
+    <ion-item> group - 02 </ion-item>
+  </ion-item-group>
+  <!-- list headers -->
+  <ion-list>
+    <ion-list-header> header - B </ion-list-header>
+    <ion-item> item - 00 </ion-item>
+    <ion-item> item - 01 </ion-item>
+  </ion-list>
+
+  <!-- Icon list -->
+  <ion-list>
+    <ion-item>
+      <ion-icon name="leaf" item-start></ion-icon>
+      icon-start
+      <ion-icon name="rose" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <!-- Avatar list-->
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/logo.png">
+      </ion-avatar>
+      <h2> h2 - 1 </h2>
+      <p> p - 1 </p>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/logo.png">
+      </ion-avatar>
+      <h2> head 2 </h2>
+      <h3> head 3</h3>
+      <p> p - 2 </p>
+    </ion-item>
+  </ion-list>
+
+  <!-- sliding list -->
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/logo.png">
+        </ion-avatar>
+        <h2> h2- 00</h2>
+      </ion-item>
+
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Thumbnail List -->
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="../../assets/imgs/logo.png">
+      </ion-thumbnail>
+      <h2> h2-00 标题-标题-标题 </h2>
+      <p> p2-00 子标题-子标题-子标题 </p>
+      <button ion-button clear item-end> 按钮 </button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Loading -->
+  <ion-card>
+    <button ion-button color="light" (click)="presentLoading()"> Loading ... 指示器 </button>
+  </ion-card>
+
+  <!-- Modal Page -->
+  <ion-card>
+    <button ion-button color="light" (click)="presentModal()"> Modal- 登录模板  </button>
+  </ion-card>
+
+  <!-- Popover -->
+  <ion-card>
+    <button ion-button icon-only padding (click)="presentPopover($event)">
+      <ion-icon name="more"></ion-icon>
+      弹框
+    </button>
+  </ion-card>
+
+  <!-- Radio basical usage-->
+  <ion-list radio-group="true">
+    <ion-list-header> language </ion-list-header>
+    <ion-item>
+      <ion-label> GO </ion-label>
+      <ion-radio checked="true" value="go"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Python </ion-label>
+      <ion-radio value="python"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label> Swift </ion-label>
+      <ion-radio value="swift" disabled="true"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <!-- Range  -->
+  <ion-item>
+    <ion-range [(ngModel)]="brightness">
+      <ion-icon range-left small name="sunny"></ion-icon>
+      <ion-icon range-right name="sunny"></ion-icon>
+    </ion-range>
+  </ion-item>
 </ion-content>

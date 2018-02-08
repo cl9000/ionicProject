@@ -1,0 +1,163 @@
+photos-view {
+    //.imgContainer {
+    //  .oneImgContainer {
+    //    margin-top: 10px;
+    //    button {
+    //      padding: 0;
+    //    }
+    //  }
+    //
+    //  .fourImgContainer {
+    //    width: 150px;
+    //    margin-top: 5px;
+    //  }
+    //
+    //  .manyImgContainer {
+    //    width: 225px;
+    //    margin-top: 5px;
+    //    //width: 100%;
+    //  }
+    //
+    //  .manyBtn {
+    //    width: 70px;
+    //    height: 70px;
+    //    padding: 0;
+    //    float: left;
+    //    margin-top: 5px;
+    //    margin-right: 5px;
+    //
+    //    img {
+    //      width: 100%;
+    //      height: 100%;
+    //    }
+    //  }
+    //}
+
+  /// 改动
+  .imgContainer {
+    .oneImgContainer {
+      margin-top: 10px;
+      button {
+        padding: 0;
+        img {
+          width: 93.75px;
+          height: 166.75px;
+        }
+      }
+    }
+
+    .fourImgContainer {
+      width: 270px;
+      margin-top: 5px;
+    }
+    .manyBtn-4 {
+      width: 110px;
+      height: 110px;
+      padding: 0;
+      float: left;
+      margin-top: 5px;
+      margin-right: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .manyImgContainer {
+      width: 270px;
+      margin-top: 5px;
+    }
+
+    .manyBtn {
+      width: 80px;
+      height: 80px;
+      padding: 0;
+      float: left;
+      margin-top: 5px;
+      margin-right: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+
+  //.imgContainer {
+  //  ul {
+  //    text-decoration: none;
+  //    list-style-type: none;
+  //    padding: 0;
+  //  }
+  //  .video_list > li {
+  //    float: left;
+  //    width: 32%;
+  //    text-align: center;
+  //    border: 1px solid #ccc;
+  //    padding-top: 31%;
+  //    margin-left: 1%;
+  //    margin-top: 1%;
+  //    position: relative;
+  //  }
+  //  .video_list > li > div {
+  //    position: absolute;
+  //    left: 0;
+  //    top: 0;
+  //    width: 100%;
+  //    height: 100%;
+  //    background-color: #09BE07;
+  //  }
+  //  .video_list > li > div > img {
+  //    display: inline-block;
+  //    margin-top: 50%;
+  //    -webkit-transform: translateY(-50%);
+  //    transform: translateY(-50%);
+  //  }
+  //
+  //  //.video_list_1 > li {
+  //  //  float: left;
+  //  //  width: 80%;
+  //  //  text-align: center;
+  //  //  border: 1px solid #ccc;
+  //  //  //padding-top: 31%;
+  //  //  margin-left: 1%;
+  //  //  margin-top: 1%;
+  //  //  position: relative;
+  //  //}
+  //  //.video_list_1 > li > div > img {
+  //  //  display: inline-block;
+  //  //  margin-top: 1%;
+  //  //  -webkit-transform: translateY(-1%);
+  //  //  transform: translateY(-1%);
+  //  //}
+  //  //
+  //  //
+  //  .video_list_4 > li {
+  //    float: left;
+  //    width: 45%;
+  //    text-align: center;
+  //    border: 1px solid #ccc;
+  //    padding-top: 45%;
+  //    margin-left: 1%;
+  //    margin-top: 1%;
+  //    position: relative;
+  //  }
+  //  .video_list_4 > li > div {
+  //    position: absolute;
+  //    left: 0;
+  //    top: 0;
+  //    width: 100%;
+  //    height: 100%;
+  //    background-color: #09BE07;
+  //  }
+  //  .video_list_4 > li > div > img {
+  //    display: inline-block;
+  //    margin-top: 0%;
+  //    //-webkit-transform: translateY(20%);
+  //    //transform: translateY(20%);
+  //
+  //  }
+  //}
+}

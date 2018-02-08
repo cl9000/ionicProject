@@ -1,0 +1,46 @@
+<!-- Generated template for the PhotosViewComponent component -->
+
+<div class="imgContainer" *ngIf="images.length>0">
+  <!--一张图片-->
+  <div class="oneImgContainer" *ngIf="images.length===1">
+    <button *ngFor="let image of images, let i=index" (click)="goToViewLargePictureCtrl($event, i, images)">
+      <img [src]=image>
+    </button>
+  </div>
+
+  <!--四张图片-->
+  <div class="fourImgContainer" *ngIf="images.length===4">
+    <button class="manyBtn-4" *ngFor="let image of images, let i = index" (click)="goToViewLargePictureCtrl($event, i, images)">
+      <!--<img [src]=image.big>-->
+      <img [src]=image>
+    </button>
+    <div class="clearFloat"></div>
+  </div>
+
+  <!--多张图片-->
+  <div class="manyImgContainer" *ngIf="images.length!==1 && images.length!==4">
+    <button class="manyBtn" *ngFor="let image of images, let i=index" (click)="goToViewLargePictureCtrl($event, i, images)">
+      <img [src]=image>
+    </button>
+    <div class="clearFloat"></div>
+  </div>
+</div>
+
+
+<!--<div class="imgContainer" *ngIf="images.length>0">-->
+  <!--<ul class="video_list_4" *ngIf="images.length===4">-->
+  <!--<li  *ngFor="let image of images, let i=index" (click)="goToViewLargePictureCtrl($event, i, images)">-->
+  <!--<div>-->
+  <!--<img [src]=image>-->
+  <!--</div>-->
+  <!--</li>-->
+  <!--</ul>-->
+
+  <!--<ul class="video_list" *ngIf="images.length!==4">-->
+    <!--<li *ngFor="let image of images, let i=index" (click)="goToViewLargePictureCtrl($event, i, images)">-->
+      <!--<div>-->
+        <!--<img [src]=image>-->
+      <!--</div>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->

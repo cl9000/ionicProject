@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePageModule} from "../pages/home/home.module";
 import {Device} from "@ionic-native/device";
+import {AboutPageModule} from "../pages/about/about.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import {Device} from "@ionic-native/device";
     IonicModule.forRoot(MyApp),
 
     HomePageModule,
+    AboutPageModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,0 +1,35 @@
+photos-view .imgContainer .oneImgContainer {
+  margin-top: 10px; }
+  photos-view .imgContainer .oneImgContainer button {
+    padding: 0; }
+    photos-view .imgContainer .oneImgContainer button img {
+      width: 93.75px;
+      height: 166.75px; }
+photos-view .imgContainer .fourImgContainer {
+  width: 270px;
+  margin-top: 5px; }
+photos-view .imgContainer .manyBtn-4 {
+  width: 110px;
+  height: 110px;
+  padding: 0;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px; }
+  photos-view .imgContainer .manyBtn-4 img {
+    width: 100%;
+    height: 100%; }
+photos-view .imgContainer .manyImgContainer {
+  width: 270px;
+  margin-top: 5px; }
+photos-view .imgContainer .manyBtn {
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px; }
+  photos-view .imgContainer .manyBtn img {
+    width: 100%;
+    height: 100%; }
+
+/*# sourceMappingURL=photos-view.css.map */

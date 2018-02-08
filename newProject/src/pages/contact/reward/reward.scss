@@ -1,0 +1,137 @@
+page-reward {
+  ul, li {
+    list-style-type:none;
+    overflow: hidden;
+  }
+  .float-left {
+    float: left;
+  }
+  .float-right {
+    float: right;
+  }
+  // 顶部图片 头像
+  .section-header{
+    position: relative;
+    width: 100%;
+    height: 23%;
+    .div-header-img {
+      height: 100%;
+      img {
+        position: inherit;
+        width: 100%;
+        height: 100%;
+      }
+      .input-header-btn {
+        right: 5%;
+        height: 56px;
+        width: 56px;
+        bottom: -20px;
+        z-index: 9999;
+        border-radius: 50%;
+        position: absolute;
+
+      }
+    }
+  }
+  //列表CSS
+  .list-message {
+    .item-block {
+      padding-left: 0px;
+    }
+    .item-block:first-child {
+      border-top: 0;
+    }
+    .li-item {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      line-height: 2rem;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .div-header-img {
+      height:100%;
+      width: 100%;
+      overflow: auto;
+      .div-header {
+        float: left;
+        padding: 2px;
+        margin-left: 6px;
+        img {
+          float: left;
+          width: 46px;
+          height: 46px;
+          padding: 5px;
+          margin-top: 10px;
+          border-radius: 23px;
+        }
+      }
+      .div-title {
+        display: block;
+        float: left;
+        width: 80%;
+        padding-top: 14px;
+        .li-content-header {
+          width: 100%;
+          overflow: auto;
+          display: block;
+        }
+
+        .p-title {
+          font-size: medium;
+          font-weight: bolder;
+          margin-top: 10px;
+          margin-bottom: 5px;
+        }
+        .p-reward {
+          display: block;
+          margin-top: 8px;
+          margin-bottom: 5px;
+          span {
+            padding: 0.3rem;
+            color: sandybrown;
+            font-size: smaller;
+            font-weight: bolder;
+            border-radius: 0.2rem;
+            border: 0.5px solid sandybrown;
+          }
+        }
+        .p-content {
+          width: 100%;
+          display: block;
+          margin: 0.1rem;
+        }
+        .photo-view {
+          width: 100%;
+        }
+        /// 日期 评论
+        .div-bottom-bar {
+          width: 100%;
+          p {
+            float: left;
+            &:first-of-type {
+              width: 40%;
+            }
+          }
+          .span-img {
+            float: left;
+            margin-top: 14px;
+            //float: right;
+          }
+          .img-icon {
+            margin: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 10px;
+          }
+          .div-comment {
+            overflow: inherit;
+            margin-top: 14px;
+
+          }
+        }
+      }
+    }
+  }
+
+}

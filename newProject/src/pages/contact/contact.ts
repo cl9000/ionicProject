@@ -22,4 +22,9 @@ export class ContactPage {
     console.log('ionViewDidLoad ContactPage');
   }
 
+  presentRewardPage() {
+    console.log('跳转到悬赏榜');
+    this.navCtrl.push('RewardPage');
+  }
+
 }

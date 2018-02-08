@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,2CAAyB;EACvB,gBAAgB,EAAE,IAAI",
+"sources": ["view-large-picture.scss"],
+"names": [],
+"file": "view-large-picture.css"
+}
