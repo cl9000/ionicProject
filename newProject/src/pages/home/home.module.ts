@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
 import {InfoPageModule} from "../info/info.module";
+import {InputSafeKeyboardModule} from "../../components/input-safe-keyboard/input-safe-keyboard.module";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {InfoPageModule} from "../info/info.module";
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
-    InfoPageModule
+    InfoPageModule,
+    InputSafeKeyboardModule
 
   ],
 })

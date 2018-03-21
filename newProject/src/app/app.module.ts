@@ -13,6 +13,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePageModule} from "../pages/home/home.module";
 import {Device} from "@ionic-native/device";
 import {AboutPageModule} from "../pages/about/about.module";
+import {NativeService} from "../providers/essential/NativeService";
+import {PayPasswordPageModule} from "../pages/pay-password/pay-password.module";
+import {FileOpener} from "@ionic-native/file-opener";
+import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
+import {File} from "@ionic-native/file";
 
 @NgModule({
   declarations: [
@@ -27,8 +32,8 @@ import {AboutPageModule} from "../pages/about/about.module";
     IonicModule.forRoot(MyApp),
 
     HomePageModule,
-    AboutPageModule
-
+    AboutPageModule,
+    PayPasswordPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,6 +47,11 @@ import {AboutPageModule} from "../pages/about/about.module";
     StatusBar,
     SplashScreen,
     Device,
+    NativeService,
+    FileOpener,
+    FileTransferObject,
+    FileTransfer,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

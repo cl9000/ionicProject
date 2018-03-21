@@ -9,14 +9,34 @@
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
-
-  <a ion-button href="http://www.baidu.com"> 百度 </a>
-  <button ion-button (click)="goNextPage()"> 跳转InfoPage页面 </button>
-  <button ion-button (click)="platformInfo()"> 当前platform信息 </button>
-  <button ion-button (click)="attendanceTest()"> 考勤的时间计算 </button>
-  <button ion-button (click)="browserUAInfo()"> 当前浏览器 UA </button>
-  <button ion-button (click)="deviceInfo()"> 当前设备信息 </button>
-  <button ion-button (click)="CFCASecurityKeyboard()"> CFCA安全键盘 </button>
+  <a ion-button block href="http://www.baidu.com"> 百度 </a>
+  <button ion-button block (click)="goNextPage()"> 跳转InfoPage页面 </button>
+  <button ion-button block (click)="platformInfo()"> 当前platform信息 </button>
+  <button ion-button block (click)="attendanceTest()"> 考勤的时间计算 </button>
+  <button ion-button block (click)="browserUAInfo()"> 当前浏览器 UA </button>
+  <button ion-button block (click)="deviceInfo()"> 当前设备信息 </button>
+  <div>
+    <ion-card>
+      <form [formGroup]="verificationForm"(ngSubmit)="confirm()">
+        <ion-list>
+          <ion-item>
+            <!--(ionFocus)="CFCASecurityKeyboardShow()"-->
+            <ion-input autofocus col-12 id="verification" type="password" name="password" formControlName="password" class="verification-num" maxlength="16" placeholder="CFCA安全键盘输入框"></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+      <input-safe-keyboard [id]="ccc"
+                           [inputType]="password"
+                           [maxLength]="6"
+                           [placeholder]=placeholdle
+                           [inputValue]="passwordStr">
+      </input-safe-keyboard>
+    </ion-card>
+  </div>
+  <button ion-button block (click)="CFCASecurityKeyboardShow()"> CFCA安全键盘手动打开 </button>
+  <button ion-button block (click)="CFCASecurityKeyboardClose()"> CFCA安全键盘手动关闭 </button>
+  <button ion-button block (click)="transfercations()"> 交易弹框 </button>
+  <button ion-button block (click)="fileUpDown()"><ion-input readonly [(ngModel)]="downLoaded"> %</ion-input> 文件上传/下载/预览</button>
 
 
 </ion-content>

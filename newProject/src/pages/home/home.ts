@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
+import {IonicPage, LoadingController, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {Device} from "@ionic-native/device";
+import {NativeService} from "../../providers/essential/NativeService";
+import {FormBuilder, Validators} from "@angular/forms";
+import {FileOpener} from "@ionic-native/file-opener";
+import {FileTransfer,FileTransferObject, FileUploadOptions} from "@ionic-native/file-transfer";
+import { File } from '@ionic-native/file';
+
+
+declare let CFCASecurityKeyboardPlugin :any;
+declare let cordova :any;
 
 @IonicPage()
 @Component({
@@ -8,12 +17,6 @@ import {Device} from "@ionic-native/device";
   templateUrl: 'home.html',
 })
 export class HomePage {
-
-  //考勤计算按钮开关
-  attendanceStart :boolean = true;
-  timer1 : any;
-  timer2 : any;
-
   browserInfo = {
     versions: function () {
       let u = navigator.userAgent, app = navigator.appVersion;
@@ -32,30 +35,64 @@ export class HomePage {
         qq: !!u.match(/\sqq/i), //是否QQ
         // qq: u.match(/mqqbrowser/i) == 'mqqbrowser', //是否QQ
         // qq: u.match(/\sQQ/i) == " qq", //是否QQ
-
-
       };
     }(),
     language: (navigator.language || navigator.language).toLowerCase()
   };
 
+  // 考勤计算按钮开关
+  attendanceStart :boolean = true;
+  timer1 : any;
+  timer2 : any;
+
+  // 安全键盘
+  inputValue: any;
+  verificationForm: any;
+  placeholdle: string = '请输入数据';
+
+  // 下载文件存储地址
+  urlStr: any;
+  downLoaded: string = '--';
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public platform: Platform,
               public device: Device,
+              private nativeService: NativeService,
+              private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController,
+              private formBuilder: FormBuilder,
+              private fileOpener: FileOpener,
+              private transfer: FileTransfer,
+              private file: File,
+
               ) {
+
+    //安全键盘
+    this.verificationForm = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+
+    this.verificationForm.get('password').valueChanges.subscribe(value => {
+      if (value.length == 6) {
+        // this.inputValue.tradePwd = value;
+        // this.goNextPage(value);
+      }
+    });
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+
+  ionViewDidLoad(){
+
+
   }
 
   /**
    * 跳转页面 - InfoPage
    */
-  goNextPage() {
-    this.navCtrl.push('InfoPage');
+  goNextPage(value) {
+    this.navCtrl.push('InfoPage',{params:value});
   }
 
   /**
@@ -152,7 +189,6 @@ export class HomePage {
 
   }
 
-
   /**
    * Device信息 -- 测试用例按钮
    */
@@ -178,18 +214,204 @@ export class HomePage {
       'serial: '+this.device.serial);
   }
 
-  /**
-   * CFCA 安全键盘
-   */
-  CFCASecurityKeyboard(){
-    console.log('\n========================1========================\n');
 
-    console.log('\n========================2========================\n');
+  /**
+   * CFCA键盘显示
+   * @constructor
+   */
+  CFCASecurityKeyboardShow(){
+    this.nativeService.getCFCAKeyboardShow().subscribe(
+      info => {
+        console.log('键盘info-- : '+JSON.stringify(info));
+        this.verificationForm.patchValue({'password': info.data.displayStr});
+        if(info.data && info.data.displayStr == '123456'){
+          // this.goNextPage(info); //处理业务需求
+          this.CFCASecurityKeyboardClose();
+        }
+        // 登录密码 全键盘测试 点击完成返回值去验证 不需要掉用关闭键盘
+        if (info.data && info.type == 'ok_done' && info.data.displayStr.length >=8){
+          console.log('加密数据-实时更新', JSON.stringify(info.data.encryptDataJson));
+        }
+      },
+      err => {
+        console.log('键盘err-- : '+JSON.stringify(err));
+      });
+  };
+
+  /**
+   * CFCA键盘关闭
+   * @constructor
+   */
+  CFCASecurityKeyboardClose(){
+    this.nativeService.getCFCAKeyboardHide().subscribe(
+      info => {
+        console.log('键盘关闭info++ : '+JSON.stringify(info));
+      },
+      err => {
+        console.log('键盘关闭err++ : '+JSON.stringify(err));
+      });
+  };
+
+  /**
+   * 交易弹框
+   */
+  transfercations(){
+    let contactModal = this.modalCtrl.create('PayPasswordPage',{params: 'param', type: 'transfer'});
+    contactModal.onDidDismiss(data =>{
+      if(data){
+        console.log('9999:' +data);
+      }
+    });
+    contactModal.present();
+  }
+
+
+  /**
+   * 文件上传、下载、预览
+   */
+  fileUpDown(){
+    let loading = this.loadingCtrl.create({
+      content: '下载进度：0%',
+      dismissOnPageChange: false,
+    });
+    loading.present();
+
+    // 上传
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: 'name.jpg',  // 文件类型
+      headers: {},
+      chunkedMode: false, //默认情况下它是以数据块流模式上传的，主要是用于上传那些直播视频类的文件，就是一直在上传的。只是上传文件或图片的，因此这里就要令它为false
+      params: {}    // 如果要传参数，写这里
+    };
+    fileTransfer.upload('<file path>', '<api endpoint>', options)
+      .then((data) => {
+        console.log('success');
+      }, (err) => {
+        console.log('error');
+      });
+
+
+    //下载
+    this.downLoaded = 'downing...';
+    const url = 'http://192.168.0.159:9999/01.pdf';
+    fileTransfer.download(url, this.file.dataDirectory + 'file.pdf')
+      .then((entry) => {
+        console.log('download complete:' + entry.toURL());
+        this.urlStr = entry.toURL();
+        if(timer)clearInterval(timer);
+        loading.dismiss();
+
+        // 预览
+        this.fileOpener.open(decodeURI(this.urlStr),'application/pdf')
+          .then(() => {
+            console.log('File is opened');
+          })
+          .catch(e => {
+            console.log('Error openening file', e);
+          });
+      }, (error) => {
+        console.log('Error', error);
+        if(timer)clearInterval(timer);
+        loading.dismiss();
+      });
+
+    // 进度
+    let now: number = 0;
+    fileTransfer.onProgress(progressEvent => {
+      if (progressEvent.lengthComputable) {
+        // 下载过程会一直打印，完成的时候会显示 1
+        console.log(progressEvent.loaded / progressEvent.total);
+        now = Number(((progressEvent.loaded / progressEvent.total) * 100).toFixed(4));
+        if (progressEvent.loaded / progressEvent.total == 1){
+          console.log('下载完毕');
+        }
+      } else {
+
+      }
+    });
+    let timer = setInterval(() => {
+      // loading.setContent('下载进度：'+Math.floor(now)+'%');
+      loading.setContent(`
+      <div class="custom-spinner-container">
+      <div class="custom-spinner-box">
+			<div class="loading">
+			
+			<div class="loading-content">下载进度：${Math.floor(now)}%
+			</div>
+			</div>
+		  </div>
+      </div>`);
+      if (now >= 99) {
+        clearInterval(timer);
+        loading.dismiss();
+      }
+    }, 300);
 
 
   }
 
+  /**
+   * 获取文件类型
+   * @param {fileType} type
+   * @returns {string}
+   */
+  getFileMimeType(fileType: string): string {
+    let mimeType: string = '';
 
+    switch (fileType) {
+      case 'txt':
+        mimeType = 'text/plain';
+        break;
+      case 'docx':
+        mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        break;
+      case 'doc':
+        mimeType = 'application/msword';
+        break;
+      case 'pptx':
+        mimeType = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+        break;
+      case 'ppt':
+        mimeType = 'application/vnd.ms-powerpoint';
+        break;
+      case 'xlsx':
+        mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        break;
+      case 'xls':
+        mimeType = 'application/vnd.ms-excel';
+        break;
+      case 'zip':
+        mimeType = 'application/x-zip-compressed';
+        break;
+      case 'rar':
+        mimeType = 'application/octet-stream';
+        break;
+      case 'pdf':
+        mimeType = 'application/pdf';
+        break;
+      case 'jpg':
+        mimeType = 'image/jpeg';
+        break;
+      case 'png':
+        mimeType = 'image/png';
+        break;
+      default:
+        mimeType = 'application/' + fileType;
+        break;
+    }
+    return mimeType;
+  }
+
+  /**
+   * 获取文件类型
+   * @param {string} path
+   * @returns {string}
+   */
+  getFileType(fileName: string): string {
+    return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase();
+  }
 
 
 }
