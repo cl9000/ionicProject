@@ -8,7 +8,7 @@ import {FileTransfer,FileTransferObject, FileUploadOptions} from "@ionic-native/
 import { File } from '@ionic-native/file';
 
 
-declare let CFCASecurityKeyboardPlugin :any;
+// declare let CFCASecurityKeyboardPlugin :any;
 declare let cordova :any;
 
 @IonicPage()
@@ -215,42 +215,42 @@ export class HomePage {
   }
 
 
-  /**
-   * CFCA键盘显示
-   * @constructor
-   */
-  CFCASecurityKeyboardShow(){
-    this.nativeService.getCFCAKeyboardShow().subscribe(
-      info => {
-        console.log('键盘info-- : '+JSON.stringify(info));
-        this.verificationForm.patchValue({'password': info.data.displayStr});
-        if(info.data && info.data.displayStr == '123456'){
-          // this.goNextPage(info); //处理业务需求
-          this.CFCASecurityKeyboardClose();
-        }
-        // 登录密码 全键盘测试 点击完成返回值去验证 不需要掉用关闭键盘
-        if (info.data && info.type == 'ok_done' && info.data.displayStr.length >=8){
-          console.log('加密数据-实时更新', JSON.stringify(info.data.encryptDataJson));
-        }
-      },
-      err => {
-        console.log('键盘err-- : '+JSON.stringify(err));
-      });
-  };
-
-  /**
-   * CFCA键盘关闭
-   * @constructor
-   */
-  CFCASecurityKeyboardClose(){
-    this.nativeService.getCFCAKeyboardHide().subscribe(
-      info => {
-        console.log('键盘关闭info++ : '+JSON.stringify(info));
-      },
-      err => {
-        console.log('键盘关闭err++ : '+JSON.stringify(err));
-      });
-  };
+  // /**
+  //  * CFCA键盘显示
+  //  * @constructor
+  //  */
+  // CFCASecurityKeyboardShow(){
+  //   this.nativeService.getCFCAKeyboardShow().subscribe(
+  //     info => {
+  //       console.log('键盘info-- : '+JSON.stringify(info));
+  //       this.verificationForm.patchValue({'password': info.data.displayStr});
+  //       if(info.data && info.data.displayStr == '123456'){
+  //         // this.goNextPage(info); //处理业务需求
+  //         this.CFCASecurityKeyboardClose();
+  //       }
+  //       // 登录密码 全键盘测试 点击完成返回值去验证 不需要掉用关闭键盘
+  //       if (info.data && info.type == 'ok_done' && info.data.displayStr.length >=8){
+  //         console.log('加密数据-实时更新', JSON.stringify(info.data.encryptDataJson));
+  //       }
+  //     },
+  //     err => {
+  //       console.log('键盘err-- : '+JSON.stringify(err));
+  //     });
+  // };
+  //
+  // /**
+  //  * CFCA键盘关闭
+  //  * @constructor
+  //  */
+  // CFCASecurityKeyboardClose(){
+  //   this.nativeService.getCFCAKeyboardHide().subscribe(
+  //     info => {
+  //       console.log('键盘关闭info++ : '+JSON.stringify(info));
+  //     },
+  //     err => {
+  //       console.log('键盘关闭err++ : '+JSON.stringify(err));
+  //     });
+  // };
 
   /**
    * 交易弹框
@@ -411,6 +411,12 @@ export class HomePage {
    */
   getFileType(fileName: string): string {
     return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase();
+  }
+
+
+  /** 城市列表 省市区三级联动*/
+  cityEdit() {
+    this.navCtrl.push('CityEditPage');
   }
 
 

@@ -18,6 +18,9 @@ import {PayPasswordPageModule} from "../pages/pay-password/pay-password.module";
 import {FileOpener} from "@ionic-native/file-opener";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
 import {File} from "@ionic-native/file";
+import {MultiPickerModule} from "ion-multi-picker";
+import { CityDataProvider } from '../providers/city-data/city-data';
+import {Http} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import {File} from "@ionic-native/file";
     FileTransferObject,
     FileTransfer,
     File,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Http,
+    MultiPickerModule,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CityDataProvider
   ]
 })
 export class AppModule {}

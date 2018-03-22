@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>编辑</ion-title>
+
+    <ion-buttons end>
+      <button ion-button>保存</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="pin" item-start></ion-icon>
+      <ion-label>居住地</ion-label>
+      <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
+    </ion-item>
+  </ion-list>
+</ion-content>
