@@ -295,7 +295,7 @@ export class HomePage {
 
     //下载
     this.downLoaded = 'downing...';
-    const url = 'http://192.168.0.159:9999/01.pdf';
+    const url = 'http://192.168.0.163:9999/01.pdf';
     fileTransfer.download(url, this.file.dataDirectory + 'file.pdf')
       .then((entry) => {
         console.log('download complete:' + entry.toURL());

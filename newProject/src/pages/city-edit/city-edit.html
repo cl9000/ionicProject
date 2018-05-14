@@ -19,4 +19,8 @@
       <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
     </ion-item>
   </ion-list>
+
+  <button ion-button (click)="openSelect()">选择市区镇</button>
+  <areas-select #areasSelect [level]="3" (cancel)="closeSelect()" (done)="selectAreas($event)" [lp]="sp" [lc]="sc"
+                [lr]="sr"></areas-select>
 </ion-content>
