@@ -42,6 +42,14 @@ export class CityEditPage {
   closeSelect() {
     console.log('关闭选择器');
   }
+  selectAreas(pos) {
+    // this.textTown = pos.value;
+    // this.textAddress = pos.value;
+    // this.textStreet = '';
+    this.sp = pos.sp;
+    this.sc = pos.sc;
+    this.sr = pos.sr;
+  }
 
 }
 
