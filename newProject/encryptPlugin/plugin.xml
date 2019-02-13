@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="i2-cordova-encrypt-plugin" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+<name>myEncryptPlugin</name>
+<js-module name="encryptPlugin" src="www/encryptPlugin.js">
+  <clobbers target="cordova.plugins.encryptPlugin"/>
+</js-module>
+<platform name="ios">
+  <config-file parent="/*" target="config.xml">
+    <feature name="encryptPlugin">
+      <param name="ios-package" value="encryptPlugin"/>
+    </feature>
+  </config-file>
+  <header-file src="src/ios/GBase64/GTMBase64.h" />
+  <header-file src="src/ios/GBase64/GTMDefines.h" />
+  <source-file src="src/ios/GBase64/GTMBase64.m" />
+  <source-file src="src/ios/encryptPlugin.m" />
+
+</platform>
+</plugin>

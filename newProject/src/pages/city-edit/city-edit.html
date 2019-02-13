@@ -16,11 +16,21 @@
     <ion-item>
       <ion-icon name="pin" item-start></ion-icon>
       <ion-label>居住地</ion-label>
-      <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
+      <ion-multi-picker item-content (ionChange)="ionChangeValue($event)" [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'"></ion-multi-picker>
     </ion-item>
   </ion-list>
 
   <button ion-button (click)="openSelect()">选择市区镇</button>
   <areas-select #areasSelect [level]="3" (cancel)="closeSelect()" (done)="selectAreas($event)" [lp]="sp" [lc]="sc"
                 [lr]="sr"></areas-select>
+
+  <ion-item>
+    <ion-label stacked>问题类型</ion-label>
+    <ion-select [(ngModel)]="typeTxt" (ngModelChange)="switchType()"  interface="popover" style="height:45px;" placeholder="请选择">
+      <ion-option value="0">请选择</ion-option>
+      <div *ngFor="let typeData of typeDataArr">
+        <ion-option value="{{typeData?.id}}">{{typeData?.type}}</ion-option>
+      </div>
+    </ion-select>
+  </ion-item>
 </ion-content>

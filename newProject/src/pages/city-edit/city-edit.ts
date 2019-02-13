@@ -16,25 +16,48 @@ export class CityEditPage {
   sc: number = 0;
   sr: number = 0;
 
+  typeTxt:any;
+  typeDataArr: any;
+
   constructor(public navCtrl: NavController,
               public cityDataProvider: CityDataProvider,
               public navParams: NavParams) {
 
 
-    this.cityColumns = this.cityDataProvider.cities;
-    console.log('1:',this.cityColumns, '2:');
+    // this.cityColumns = this.cityDataProvider.cities;
+    this.cityColumns = [
+      {
+        name: 'accCol',
+        options: [
+          { text: '00', value: '1' },
+          { text: '11', value: '2' },
+          { text: '22', value: '3' }
+        ]
+      }
+    ];
+
+    this.typeDataArr = [
+      {id: '0', type: '00'},
+      {id: '1', type: '11'},
+      {id: '2', type: '22'},
+      {id: '3', type: '33'},
+      {id: '4', type: '44'},
+    ]
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CityEditPage');
-    console.log('3:');
 
+  }
+  ionChangeValue(va){
+    console.log('--' + JSON.stringify(va.accCol.text));
+    console.log('++' + JSON.stringify(va.accCol.value));
 
   }
 
-  @ViewChild('areasSelect') areasSelect;
 
+  @ViewChild('areasSelect') areasSelect;
   openSelect() {
     this.areasSelect.open();
   }
@@ -49,6 +72,11 @@ export class CityEditPage {
     this.sp = pos.sp;
     this.sc = pos.sc;
     this.sr = pos.sr;
+  }
+
+  /*选择select的value*/
+  switchType() {
+    console.log(this.typeTxt);
   }
 
 }

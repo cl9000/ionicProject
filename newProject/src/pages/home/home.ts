@@ -152,6 +152,8 @@ export class HomePage {
       'userAgent = '+ JSON.stringify(navigator.userAgent)+'\n'+
       'app = '+ JSON.stringify(navigator.appVersion)
     );
+    alert('userAgent = '+ JSON.stringify(navigator.userAgent)+'\n'+
+      'app = '+ JSON.stringify(navigator.appVersion));
     alert(
       'browserInfo = '+ JSON.stringify(this.browserInfo.versions)+'\n'+
       this.browserInfo.versions.trident+' : IE内核-Trident'+'\n'+

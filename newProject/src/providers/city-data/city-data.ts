@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import * as cityList from '../../assets/citys.json'
+import {cityList} from "./citys"
 
 @Injectable()
 export class CityDataProvider {
@@ -8,12 +8,11 @@ export class CityDataProvider {
 
   constructor(
               ) {
-    console.log('Hello CityDataProvider Provider');
 
     console.log('00000000',cityList);
-
+  }
+  ionViewDidLoad(){
     this.cities = cityList;
-
   }
 
 

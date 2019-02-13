@@ -1,0 +1,17 @@
+{
+  "name": "encryptPlugin",
+  "version": "1.0.0",
+  "description": "3DES",
+  "cordova": {
+    "id": "i2-cordova-encrypt-plugin",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "cl9000",
+  "license": "ISC"
+}

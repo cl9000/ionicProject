@@ -21,6 +21,7 @@ import {File} from "@ionic-native/file";
 import {MultiPickerModule} from "ion-multi-picker";
 import { CityDataProvider } from '../providers/city-data/city-data';
 import {Http} from "@angular/http";
+import {CodePush} from "@ionic-native/code-push";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {Http} from "@angular/http";
     Http,
     MultiPickerModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CityDataProvider
+    CityDataProvider,
+    CodePush,
   ]
 })
 export class AppModule {}
